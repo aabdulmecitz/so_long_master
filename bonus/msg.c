@@ -36,25 +36,31 @@ void	error(char *msg, t_ctx *ctx)
 void	congrats_msg(void)
 {
 	ft_printf(GREEN "\n");
-	ft_printf(GREEN "==============================================\n" RESET);
-	ft_printf(GREEN "           🎉 CONGRATULATIONS! 🎉\n" RESET);
-	ft_printf(GREEN "----------------------------------------------\n" RESET);
-	ft_printf(GREEN " You finished the game! Well done! 🏆\n" RESET);
-	ft_printf(GREEN " Thank you for playing so_long. 👾\n" RESET);
-	ft_printf(GREEN " Hope you enjoyed the adventure!\n" RESET);
-	ft_printf(GREEN "==============================================\n" RESET);
-	ft_printf(GREEN "\n");
+	ft_printf("  **********************************************\n");
+	ft_printf("  *                                            *\n");
+	ft_printf("  *     " YELLOW "🎉  CONGRATULATIONS!  🎉" GREEN "             *\n");
+	ft_printf("  *                                            *\n");
+	ft_printf("  **********************************************\n");
+	ft_printf("  *                                            *\n");
+	ft_printf("  *     You've conquered the dungeon!          *\n");
+	ft_printf("  *     " CYAN "Thank you for playing so_long! 🐬" GREEN "       *\n");
+	ft_printf("  *                                            *\n");
+	ft_printf("  **********************************************\n" RESET);
+	ft_printf("\n");
 }
 
 void	failed_msg(void)
 {
 	ft_printf(RED "\n");
-	ft_printf(RED "==============================================\n" RESET);
-	ft_printf(RED "                GAME OVER! 😢\n" RESET);
-	ft_printf(RED "----------------------------------------------\n" RESET);
-	ft_printf(RED " You didn't complete the game this time.\n" RESET);
-	ft_printf(RED " Don't give up! Try again and beat the challenge.\n" RESET);
-	ft_printf(RED " Good luck on your next attempt!\n" RESET);
-	ft_printf(RED "==============================================\n" RESET);
-	ft_printf(RED "\n");
+	ft_printf("  ##############################################\n");
+	ft_printf("  #                                            #\n");
+	ft_printf("  #          " WHITE "☠️   GAME OVER  ☠️" RED "               #\n");
+	ft_printf("  #                                            #\n");
+	ft_printf("  ##############################################\n");
+	ft_printf("  #                                            #\n");
+	ft_printf("  #     The shadows have taken you...          #\n");
+	ft_printf("  #     " YELLOW "Try again to claim your glory!" RED "      #\n");
+	ft_printf("  #                                            #\n");
+	ft_printf("  ##############################################\n" RESET);
+	ft_printf("\n");
 }

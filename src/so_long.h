@@ -6,7 +6,7 @@
 /*   By: aozkaya <aozkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 18:33:15 by aozkaya           #+#    #+#             */
-/*   Updated: 2026/03/12 18:33:17 by aozkaya          ###   ########.fr       */
+/*   Updated: 2026/03/12 18:48:25 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
+
+# define GREEN "\033[0;32m"
+# define RED "\033[1;31m"
+# define GREY "\033[0;90m"
+# define CYAN "\033[1;96m"
+# define YELLOW "\033[1;33m"
+# define RESET "\033[0m"
 
 # define IMG_WIDTH 32
 # define IMG_HEIGHT 32
@@ -93,9 +100,10 @@ void	so_long_init(t_ctx *ctx);
 void	ft_init_mlx(t_ctx *ctx);
 void	ft_init_sprites(t_ctx *ctx);
 void	render_map(t_ctx *ctx);
-int	key_hook(int keycode, t_ctx *ctx);
-int	win_destroy(t_ctx *ctx);
+int		key_hook(int keycode, t_ctx *ctx);
+int		win_destroy(t_ctx *ctx);
 void	success_exit(t_ctx *ctx);
+void	free_double(void *p1, void *p2, void *p3, void *p4);
 void	error(char *msg, t_ctx *ctx);
 void	free_map_inside(t_map *map);
 

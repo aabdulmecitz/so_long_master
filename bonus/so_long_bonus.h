@@ -112,6 +112,8 @@
 # define RED "\033[1;31m"
 # define GREY "\033[0;90m"
 # define CYAN "\033[1;96m"
+# define YELLOW "\033[1;33m"
+# define WHITE "\033[1;37m"
 # define RESET "\033[0m"
 
 typedef struct s_location

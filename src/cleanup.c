@@ -6,11 +6,19 @@
 /*   By: aozkaya <aozkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 18:32:33 by aozkaya           #+#    #+#             */
-/*   Updated: 2026/03/12 18:32:35 by aozkaya          ###   ########.fr       */
+/*   Updated: 2026/03/12 19:01:31 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	free_double(void *p1, void *p2, void *p3, void *p4)
+{
+	free(p1);
+	free(p2);
+	free(p3);
+	free(p4);
+}
 
 void	free_map_inside(t_map *map)
 {
@@ -44,13 +52,24 @@ static void	ft_destroy_imgs(t_ctx *ctx)
 
 void	success_exit(t_ctx *ctx)
 {
+	ft_printf(GREEN "\n");
+	ft_printf("  **********************************************\n");
+	ft_printf("  *                                            *\n");
+	ft_printf("  *     " YELLOW "🎉  CONGRATULATIONS!  🎉" GREEN "             *\n");
+	ft_printf("  *                                            *\n");
+	ft_printf("  **********************************************\n");
+	ft_printf("  *                                            *\n");
+	ft_printf("  *     You've escaped with all the loot!      *\n");
+	ft_printf("  *     Final Movements: " YELLOW "%d" GREEN "                   *\n", ctx->movements);
+	ft_printf("  *                                            *\n");
+	ft_printf("  *     " CYAN "Thank you for playing so_long! 🐬" GREEN "       *\n");
+	ft_printf("  *                                            *\n");
+	ft_printf("  **********************************************\n" RESET);
+	ft_printf("\n");
 	ft_destroy_imgs(ctx);
 	if (ctx->map_alloc)
 		free_map_inside(&ctx->map);
-	free(ctx->wall);
-	free(ctx->floor);
-	free(ctx->coins);
-	free(ctx->player);
+	free_double(ctx->wall, ctx->floor, ctx->coins, ctx->player);
 	free(ctx->exit);
 	free(ctx->exit_open);
 	if (ctx->mlx_ptr)
@@ -66,16 +85,23 @@ void	success_exit(t_ctx *ctx)
 
 void	error(char *msg, t_ctx *ctx)
 {
-	ft_printf("Error\n%s\n", msg);
+	ft_printf(RED "\n");
+	ft_printf("  ##############################################\n");
+	ft_printf("  #                                            #\n");
+	ft_printf("  #          " YELLOW "⚠️   ERROR OCCURRED  ⚠️" RED "           #\n");
+	ft_printf("  #                                            #\n");
+	ft_printf("  ##############################################\n");
+	ft_printf("  #                                            #\n");
+	ft_printf("    Reason: %s\n", msg);
+	ft_printf("  #                                            #\n");
+	ft_printf("  ##############################################\n" RESET);
+	ft_printf("\n");
 	if (ctx)
 	{
 		ft_destroy_imgs(ctx);
 		if (ctx->map_alloc)
 			free_map_inside(&ctx->map);
-		free(ctx->wall);
-		free(ctx->floor);
-		free(ctx->coins);
-		free(ctx->player);
+		free_double(ctx->wall, ctx->floor, ctx->coins, ctx->player);
 		free(ctx->exit);
 		free(ctx->exit_open);
 		if (ctx->mlx_ptr)

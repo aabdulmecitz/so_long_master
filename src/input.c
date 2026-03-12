@@ -25,8 +25,8 @@ static void	ft_move_dir(t_ctx *ctx, int dx, int dy)
 		{
 			if (ctx->map.coins == 0)
 			{
-				ft_printf("Movements: %d\n", ++ctx->movements);
-				ft_printf("Congratulations! You won!\n");
+				ft_printf(CYAN "Movements: " YELLOW "%d\n" RESET, ++ctx->movements);
+				ft_printf(GREEN "Congratulations! You won!\n" RESET);
 				success_exit(ctx);
 			}
 			return ;
@@ -37,7 +37,7 @@ static void	ft_move_dir(t_ctx *ctx, int dx, int dy)
 		ctx->map.player.x += dx;
 		ctx->map.player.y += dy;
 		ctx->map.map_matris[ctx->map.player.y][ctx->map.player.x] = PLAYER;
-		ft_printf("Movements: %d\n", ++ctx->movements);
+		ft_printf(CYAN "Movements: " YELLOW "%d\n" RESET, ++ctx->movements);
 		render_map(ctx);
 	}
 }

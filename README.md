@@ -1,3 +1,5 @@
+
+
 *This project has been created as part of the 42 curriculum by aozkaya.*
 
 # so_long - 2D Top-Down Adventure 🐬
@@ -49,4 +51,4 @@ make bonus
 ## Resources
 * [MiniLibX Documentation](https://harm-smits.github.io/42docs/libs/minilibx)
 * AI was used to assist in organizing the animation logic and refactoring the map validation structures.
-# so_long_master
+

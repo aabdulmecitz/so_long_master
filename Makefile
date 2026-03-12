@@ -28,34 +28,51 @@ BONUS_SRCS = $(addprefix $(BONUS_SRCS_DIR),\
 OBJS        = $(SRCS:.c=.o)
 BONUS_OBJS  = $(BONUS_SRCS:.c=.o)
 
+# Colors
+DEF_COLOR = \033[0;39m
+GRAY = \033[0;90m
+RED = \033[0;91m
+GREEN = \033[0;92m
+YELLOW = \033[0;93m
+BLUE = \033[0;94m
+MAGENTA = \033[0;95m
+CYAN = \033[0;96m
+WHITE = \033[0;97m
+
 all: $(NAME)
 
-$(NAME): $(LIBFT_A) $(MLX_A)
-	$(CC) $(CFLAGS) $(INCLUDES) $(SRCS) $(LIBFT_A) $(LIBS) -o $@
-	@echo "$(NAME) built."
+$(NAME): $(OBJS) $(LIBFT_A) $(MLX_A)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT_A) $(LIBS) -o $@
+	@echo "$(GREEN)$(NAME) successfully compiled!$(DEF_COLOR)"
 
 bonus: $(NAME_BONUS)
 
-$(NAME_BONUS): $(LIBFT_A) $(MLX_A)
-	$(CC) $(CFLAGS) $(INCLUDES) $(BONUS_SRCS) $(LIBFT_A) $(LIBS) -o $@
-	@echo "$(NAME_BONUS) built."
+$(NAME_BONUS): $(BONUS_OBJS) $(LIBFT_A) $(MLX_A)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(BONUS_OBJS) $(LIBFT_A) $(LIBS) -o $@
+	@echo "$(MAGENTA)$(NAME_BONUS) successfully compiled!$(DEF_COLOR)"
+
+%.o: %.c
+	@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(LIBFT_A):
-	@echo "Compiling libft..."
-	@make -C $(LIBFT_DIR)
+	@echo "$(BLUE)Compiling libft...$(DEF_COLOR)"
+	@make -C $(LIBFT_DIR) > /dev/null
 
 $(MLX_A):
-	@echo "Compiling mlx..."
-	@make -C $(MLX_DIR)
+	@echo "$(BLUE)Compiling minilibx...$(DEF_COLOR)"
+	@make -C $(MLX_DIR) > /dev/null 2>&1
 
 clean:
-	@make -C $(LIBFT_DIR) clean
-	@make -C $(MLX_DIR) clean
-	@echo "Cleaned libraries."
+	@$(RM) $(OBJS) $(BONUS_OBJS)
+	@make -C $(LIBFT_DIR) clean > /dev/null
+	@make -C $(MLX_DIR) clean > /dev/null
+	@echo "$(RED)Object files and libraries cleaned.$(DEF_COLOR)"
 
 fclean: clean
-	$(RM) $(NAME) $(NAME_BONUS)
-	@echo "Removed binaries."
+	@$(RM) $(NAME) $(NAME_BONUS)
+	@make -C $(LIBFT_DIR) fclean > /dev/null
+	@echo "$(RED)Binaries removed.$(DEF_COLOR)"
 
 re: fclean all
 

@@ -100,5 +100,7 @@ void	general_checker(t_ctx *ctx)
 	free(clone_map_c);
 	free(clone_map_e);
 	if (!result)
-		error("Exit or all collectibles are not reachable!", ctx);
+		error("Pathfinding failed: Exit or all collectibles are not reachable!", ctx);
+	else
+		ft_printf(GREEN "Pathfinding validation passed!\n" RESET);
 }
