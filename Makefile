@@ -16,7 +16,7 @@ LIBS            = -L$(MLX_DIR) -lmlx -lX11 -lXext -lm -lbsd
 
 SRCS = $(addprefix $(SRCS_DIR),\
 		main.c parse.c validate.c flood_fill.c \
-		game_init.c input.c render.c cleanup.c)
+		game_init.c input.c render.c cleanup.c gc.c gc_utils.c)
 
 BONUS_SRCS = $(addprefix $(BONUS_SRCS_DIR),\
 		so_long_bonus.c animation_creator.c button_acts.c check_cmd_args.c \

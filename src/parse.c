@@ -6,11 +6,35 @@
 /*   By: aozkaya <aozkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 18:33:05 by aozkaya           #+#    #+#             */
-/*   Updated: 2026/03/12 18:33:06 by aozkaya          ###   ########.fr       */
+/*   Updated: 2026/05/07 03:59:45 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static char	*read_map_file(int map_fd, int *rows, t_ctx *ctx)
+{
+	char	*map_temp;
+	char	*line_temp;
+	char	*tmp;
+
+	map_temp = ft_strdup("");
+	if (!map_temp)
+		error("Map allocation failed.", ctx);
+	*rows = 0;
+	while (1)
+	{
+		line_temp = get_next_line(map_fd);
+		if (line_temp == NULL)
+			break ;
+		tmp = ft_strjoin(map_temp, line_temp);
+		free(map_temp);
+		free(line_temp);
+		map_temp = tmp;
+		(*rows)++;
+	}
+	return (map_temp);
+}
 
 void	check_cmd_args(int argc, char const *argv[], t_ctx *ctx)
 {
@@ -54,29 +78,21 @@ void	check_empty_lines(char *map, t_ctx *ctx)
 void	map_initializer(t_ctx *ctx, char *argv)
 {
 	char	*map_temp;
-	char	*line_temp;
-	char	*tmp;
 	int		map_fd;
 
 	map_fd = open(argv, O_RDONLY);
 	if (map_fd == -1)
 		error("The Map couldn't be opened. Does the Map exist?", ctx);
-	map_temp = ft_strdup("");
-	ctx->map.rows = 0;
-	while (1)
-	{
-		line_temp = get_next_line(map_fd);
-		if (line_temp == NULL)
-			break ;
-		tmp = ft_strjoin(map_temp, line_temp);
-		free(map_temp);
-		free(line_temp);
-		map_temp = tmp;
-		ctx->map.rows++;
-	}
+	map_temp = read_map_file(map_fd, &ctx->map.rows, ctx);
 	close(map_fd);
 	check_empty_lines(map_temp, ctx);
 	ctx->map.map_matris = ft_split(map_temp, '\n');
+	if (!ctx->map.map_matris)
+	{
+		free(map_temp);
+		error("Map split failed.", ctx);
+	}
+	gc_add_string_array(&ctx->gc, ctx->map.map_matris);
 	ctx->map_alloc = 1;
 	free(map_temp);
 }

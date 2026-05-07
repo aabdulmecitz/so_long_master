@@ -6,7 +6,7 @@
 /*   By: aozkaya <aozkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 18:32:38 by aozkaya           #+#    #+#             */
-/*   Updated: 2026/03/12 18:32:40 by aozkaya          ###   ########.fr       */
+/*   Updated: 2026/05/07 03:59:45 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,8 @@ void	general_checker(t_ctx *ctx)
 	free(clone_map_c);
 	free(clone_map_e);
 	if (!result)
-		error("Pathfinding failed: Exit or all collectibles are not reachable!", ctx);
+		error("Pathfinding failed: Exit or all collectibles are "
+			"not reachable!", ctx);
 	else
 		ft_printf(GREEN "Pathfinding validation passed!\n" RESET);
 }

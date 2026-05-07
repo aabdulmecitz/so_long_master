@@ -6,38 +6,44 @@
 /*   By: aozkaya <aozkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 18:32:47 by aozkaya           #+#    #+#             */
-/*   Updated: 2026/03/12 18:32:49 by aozkaya          ###   ########.fr       */
+/*   Updated: 2026/05/07 04:00:38 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+static void	ft_finish_game(t_ctx *ctx)
+{
+	ft_printf(CYAN "Movements: " YELLOW "%d\n" RESET, ++ctx->movements);
+	ft_printf(GREEN "Congratulations! You won!\n" RESET);
+	success_exit(ctx);
+}
+
 static void	ft_move_dir(t_ctx *ctx, int dx, int dy)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
+	char	current_tile;
 
 	x = ctx->map.player.x;
 	y = ctx->map.player.y;
-	if (ctx->map.map_matris[y + dy][x + dx] != WALL)
+	current_tile = ctx->map.map_matris[y + dy][x + dx];
+	if (current_tile != WALL)
 	{
-		if (ctx->map.map_matris[y + dy][x + dx] == MAP_EXIT)
+		if (current_tile == MAP_EXIT)
 		{
 			if (ctx->map.coins == 0)
-			{
-				ft_printf(CYAN "Movements: " YELLOW "%d\n" RESET, ++ctx->movements);
-				ft_printf(GREEN "Congratulations! You won!\n" RESET);
-				success_exit(ctx);
-			}
+				ft_finish_game(ctx);
 			return ;
 		}
-		if (ctx->map.map_matris[y + dy][x + dx] == COINS)
+		if (current_tile == COINS)
 			ctx->map.coins--;
 		ctx->map.map_matris[y][x] = FLOOR;
 		ctx->map.player.x += dx;
 		ctx->map.player.y += dy;
 		ctx->map.map_matris[ctx->map.player.y][ctx->map.player.x] = PLAYER;
-		ft_printf(CYAN "Movements: " YELLOW "%d\n" RESET, ++ctx->movements);
+		ft_printf(CYAN "Movements: " YELLOW "%d\n" RESET,
+			++ctx->movements);
 		render_map(ctx);
 	}
 }

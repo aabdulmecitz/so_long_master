@@ -6,7 +6,7 @@
 /*   By: aozkaya <aozkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 18:32:57 by aozkaya           #+#    #+#             */
-/*   Updated: 2026/03/12 18:33:00 by aozkaya          ###   ########.fr       */
+/*   Updated: 2026/05/07 03:49:46 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, const char *argv[])
 		ft_printf(RED "Error\nMemory allocation failed for game\n" RESET);
 		exit(1);
 	}
+	gc_init(&ctx->gc);
 	ft_printf(CYAN "Initializing so_long...\n" RESET);
 	so_long_init(ctx);
 	check_cmd_args(argc, argv, ctx);

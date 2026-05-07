@@ -6,32 +6,40 @@
 /*   By: aozkaya <aozkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 18:33:20 by aozkaya           #+#    #+#             */
-/*   Updated: 2026/03/12 18:33:24 by aozkaya          ###   ########.fr       */
+/*   Updated: 2026/05/07 04:00:22 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+static int	ft_is_border(t_ctx *ctx, int x, int y)
+{
+	if (y == 0 || y == ctx->map.rows - 1)
+		return (1);
+	if (x == 0 || x == ctx->map.columns - 1)
+		return (1);
+	return (0);
+}
+
 static void	ft_count_elements(t_ctx *ctx, int x, int y)
 {
-	if ((y == 0 || y == ctx->map.rows - 1 || x == 0 || \
-		x == ctx->map.columns - 1) && ctx->map.map_matris[y][x] != WALL)
+	char	tile;
+
+	tile = ctx->map.map_matris[y][x];
+	if (ft_is_border(ctx, x, y) && tile != WALL)
 		error("Map is not surrounded by walls.", ctx);
-	if (ctx->map.map_matris[y][x] == PLAYER)
+	if (tile == PLAYER)
 	{
 		ctx->map.players++;
 		ctx->map.player.y = y;
 		ctx->map.player.x = x;
 	}
-	else if (ctx->map.map_matris[y][x] == MAP_EXIT)
+	else if (tile == MAP_EXIT)
 		ctx->map.exit++;
-	else if (ctx->map.map_matris[y][x] == COINS)
+	else if (tile == COINS)
 		ctx->map.coins++;
-	else if (ctx->map.map_matris[y][x] != WALL && \
-		ctx->map.map_matris[y][x] != FLOOR && \
-		ctx->map.map_matris[y][x] != PLAYER && \
-		ctx->map.map_matris[y][x] != MAP_EXIT && \
-		ctx->map.map_matris[y][x] != COINS)
+	else if (tile != WALL && tile != FLOOR && tile != PLAYER
+		&& tile != MAP_EXIT && tile != COINS)
 		error("Invalid character in map.", ctx);
 }
 
@@ -61,7 +69,7 @@ void	ft_check_elements(t_ctx *ctx)
 
 void	ft_check_rectangular(t_ctx *ctx)
 {
-	int	i;
+	int		i;
 	size_t	first_row_len;
 
 	if (ctx->map.rows == 0)

@@ -6,7 +6,7 @@
 /*   By: aozkaya <aozkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 18:32:43 by aozkaya           #+#    #+#             */
-/*   Updated: 2026/03/12 18:32:45 by aozkaya          ###   ########.fr       */
+/*   Updated: 2026/05/07 03:59:45 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,14 @@ static void	load_sprite(t_img *sprite, void *mlx, char *path, t_ctx *ctx)
 
 void	ft_init_sprites(t_ctx *ctx)
 {
-	ctx->wall = malloc(sizeof(t_img));
-	ctx->floor = malloc(sizeof(t_img));
-	ctx->coins = malloc(sizeof(t_img));
-	ctx->player = malloc(sizeof(t_img));
-	ctx->exit = malloc(sizeof(t_img));
-	ctx->exit_open = malloc(sizeof(t_img));
-	if (!ctx->wall || !ctx->floor || !ctx->coins || !ctx->player || !ctx->exit || !ctx->exit_open)
+	ctx->wall = gc_malloc(&ctx->gc, sizeof(t_img));
+	ctx->floor = gc_malloc(&ctx->gc, sizeof(t_img));
+	ctx->coins = gc_malloc(&ctx->gc, sizeof(t_img));
+	ctx->player = gc_malloc(&ctx->gc, sizeof(t_img));
+	ctx->exit = gc_malloc(&ctx->gc, sizeof(t_img));
+	ctx->exit_open = gc_malloc(&ctx->gc, sizeof(t_img));
+	if (!ctx->wall || !ctx->floor || !ctx->coins || !ctx->player
+		|| !ctx->exit || !ctx->exit_open)
 		error("Sprite memory allocation failed.", ctx);
 	load_sprite(ctx->wall, ctx->mlx_ptr, WALL_XPM, ctx);
 	load_sprite(ctx->floor, ctx->mlx_ptr, FLOOR_XPM, ctx);

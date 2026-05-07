@@ -6,7 +6,7 @@
 /*   By: aozkaya <aozkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 18:33:15 by aozkaya           #+#    #+#             */
-/*   Updated: 2026/03/12 18:48:25 by aozkaya          ###   ########.fr       */
+/*   Updated: 2026/05/07 04:01:24 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,20 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
+
+typedef struct s_gc_node	t_gc_node;
+
+struct	s_gc_node
+{
+	void		*ptr;
+	t_gc_node	*next;
+};
+
+typedef struct s_garbage_collector
+{
+	t_gc_node	*head;
+	int			count;
+}	t_gc;
 
 # define GREEN "\033[0;32m"
 # define RED "\033[1;31m"
@@ -78,6 +92,7 @@ typedef struct s_img
 
 typedef struct s_ctx
 {
+	t_gc	gc;
 	void	*mlx_ptr;
 	void	*win_ptr;
 	int		movements;
@@ -91,7 +106,14 @@ typedef struct s_ctx
 	t_img	*exit_open;
 }	t_ctx;
 
-/* Function Prototypes */
+void	gc_init(t_gc *gc);
+void	gc_add(t_gc *gc, void *ptr);
+void	*gc_malloc(t_gc *gc, size_t size);
+char	*gc_strdup(t_gc *gc, const char *str);
+void	gc_add_string_array(t_gc *gc, char **array);
+void	gc_remove(t_gc *gc, void *ptr);
+void	gc_free_all(t_gc *gc);
+
 void	check_cmd_args(int argc, char const *argv[], t_ctx *ctx);
 void	map_initializer(t_ctx *ctx, char *argv);
 void	map_checker(t_ctx *ctx);
