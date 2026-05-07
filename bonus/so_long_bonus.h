@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aozkaya <aozkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 17:09:11 by aozkaya           #+#    #+#             */
-/*   Updated: 2025/06/10 19:10:21 by aozkaya          ###   ########.fr       */
+/*   Updated: 2026/05/07 05:08:34 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,18 @@
 # define WHITE "\033[1;37m"
 # define RESET "\033[0m"
 
+typedef struct s_gc_node
+{
+	void				*ptr;
+	struct s_gc_node	*next;
+}					t_gc_node;
+
+typedef struct s_garbage_collector
+{
+	t_gc_node	*head;
+	int			count;
+}					t_gc;
+
 typedef struct s_location
 {
 	int				x;
@@ -169,6 +181,7 @@ typedef struct s_enemy
 
 typedef struct s_ctx
 {
+	t_gc			gc;
 	void			*mlx_ptr;
 	void			*win_ptr;
 	int				movements;
@@ -259,5 +272,13 @@ t_img				*get_player_right_frame(t_img *frame);
 t_img				*get_coin_frame(t_img *frame);
 t_img				*get_wall_frame(t_img *frame);
 t_img				*get_toxic_frame(t_img *frame);
+
+void				gc_init(t_gc *gc);
+void				gc_add(t_gc *gc, void *ptr);
+void				*gc_malloc(t_gc *gc, size_t size);
+char				*gc_strdup(t_gc *gc, const char *str);
+void				gc_add_string_array(t_gc *gc, char **array);
+void				gc_remove(t_gc *gc, void *ptr);
+void				gc_free_all(t_gc *gc);
 
 #endif

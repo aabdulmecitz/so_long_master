@@ -1,54 +1,47 @@
-
-
 *This project has been created as part of the 42 curriculum by aozkaya.*
 
-# so_long - 2D Top-Down Adventure 🐬
-
-A small 2D game built with the MiniLibX library. The player must collect all collectibles and reach the exit with the minimum number of moves.
+# So Long
 
 ## Description
-In this game, you control a character in a top-down environment. Your goal is to gather all fish/coins scattered across the map and reach the exit. 
 
-### Features
-* **Mandatory part**: 
-    - Smooth 2D movement (WASD or Arrow keys).
-    - Map parsing and validation (.ber files).
-    - Wall collision detection.
-    - Movement counter in the terminal.
-* **Bonus part**:
-    - Sprite animations for coins, walls, and player.
-    - Enemy patrols (static and wandering).
-    - On-screen movement counter.
+So Long is a small 2D top-down game built in C with MiniLibX. The player must collect every collectible on the map and then reach the exit while avoiding walls. The project focuses on window management, image rendering, input handling, map parsing, and clean memory management.
+
+The repository includes both the mandatory game and a bonus version with extra features such as enemies, sprite animations, and on-screen movement feedback.
 
 ## Instructions
 
-### 1. Initialization
-You must initialize the submodules (minilibx and libft) before compiling:
-```bash
-make get_libs
-```
+### Requirements
+- Linux environment
+- `make`
+- MiniLibX dependencies available for your system
 
-### 2. Compilation
-To compile the mandatory version:
+### Build
 ```bash
 make
-```
-To compile the bonus version:
-```bash
 make bonus
 ```
 
-### 3. Execution
+### Run
 ```bash
-./so_long assets/maps/valid/map1.ber
-./so_long_bonus assets/maps/valid/bonus/platform_bonus1.ber
+./so_long ./assets/maps/valid/map1.ber
+./so_long_bonus ./assets/maps/valid/bonus/map5.ber
 ```
 
-**Controls**:
-* `W/A/S/D` or `Arrow Keys` - Movement
-* `ESC` or `Q` - Quit cleanly
+### Clean
+```bash
+make clean
+make fclean
+make re
+```
 
 ## Resources
-* [MiniLibX Documentation](https://harm-smits.github.io/42docs/libs/minilibx)
-* AI was used to assist in organizing the animation logic and refactoring the map validation structures.
 
+- MiniLibX documentation and examples
+- `man 2 open`, `man 2 read`, `man 3 malloc`, `man 3 free`
+- The 42 So Long subject
+- Map validation and flood-fill algorithm references
+- Libft project sources used in this repository
+
+### AI Usage
+
+AI was used only as a reference while learning some algorithms and checking ideas during development. It was not used to write the project code itself.

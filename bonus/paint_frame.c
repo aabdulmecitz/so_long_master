@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paint_frame.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aozkaya <aozkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 20:31:21 by aozkaya           #+#    #+#             */
-/*   Updated: 2025/05/26 04:49:38 by aozkaya          ###   ########.fr       */
+/*   Updated: 2026/05/07 04:53:07 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	paint_coin_with_animation(t_ctx *ctx, int x, int y)
 	current_coin_frame = NULL;
 	current_coin_frame = get_coin_frame(ctx->coins);
 	mlx_put_image_to_window(ctx->mlx_ptr, ctx->win_ptr, \
-		current_coin_frame->xpm_ptr, x * IMG_WIDTH, y * IMG_HEIGHT);
+current_coin_frame->xpm_ptr, x * IMG_WIDTH, y * IMG_HEIGHT);
 }
 
 void	paint_wall_with_animation(t_ctx *ctx, int x, int y)
@@ -29,7 +29,7 @@ void	paint_wall_with_animation(t_ctx *ctx, int x, int y)
 	current_wall_frame = NULL;
 	current_wall_frame = get_wall_frame(ctx->wall);
 	mlx_put_image_to_window(ctx->mlx_ptr, ctx->win_ptr, \
-		current_wall_frame->xpm_ptr, x * IMG_WIDTH, y * IMG_HEIGHT);
+current_wall_frame->xpm_ptr, x * IMG_WIDTH, y * IMG_HEIGHT);
 }
 
 void	paint_toxic_with_animation(t_ctx *ctx, int x, int y)
@@ -39,7 +39,7 @@ void	paint_toxic_with_animation(t_ctx *ctx, int x, int y)
 	current_toxic_frame = NULL;
 	current_toxic_frame = get_toxic_frame(ctx->enemy_k);
 	mlx_put_image_to_window(ctx->mlx_ptr, ctx->win_ptr, \
-		current_toxic_frame->xpm_ptr, x * IMG_WIDTH, y * IMG_HEIGHT);
+current_toxic_frame->xpm_ptr, x * IMG_WIDTH, y * IMG_HEIGHT);
 }
 
 void	paint_enemy_x_with_animation(t_ctx *ctx, int x, int y)
@@ -60,8 +60,8 @@ void	paint_door(t_ctx *ctx, int x, int y)
 {
 	if (ctx->map.coins == 0)
 		mlx_put_image_to_window(ctx->mlx_ptr, ctx->win_ptr, \
-				ctx->open_exit->xpm_ptr, x * IMG_WIDTH, y * IMG_HEIGHT);
+ctx->open_exit->xpm_ptr, x * IMG_WIDTH, y * IMG_HEIGHT);
 	else
 		mlx_put_image_to_window(ctx->mlx_ptr, ctx->win_ptr, \
-				ctx->exit_closed->xpm_ptr, x * IMG_WIDTH, y * IMG_HEIGHT);
+ctx->exit_closed->xpm_ptr, x * IMG_WIDTH, y * IMG_HEIGHT);
 }

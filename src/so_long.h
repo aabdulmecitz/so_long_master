@@ -6,7 +6,7 @@
 /*   By: aozkaya <aozkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 18:33:15 by aozkaya           #+#    #+#             */
-/*   Updated: 2026/05/07 04:01:24 by aozkaya          ###   ########.fr       */
+/*   Updated: 2026/05/07 05:08:34 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,6 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
-
-typedef struct s_gc_node	t_gc_node;
-
-struct	s_gc_node
-{
-	void		*ptr;
-	t_gc_node	*next;
-};
-
-typedef struct s_garbage_collector
-{
-	t_gc_node	*head;
-	int			count;
-}	t_gc;
 
 # define GREEN "\033[0;32m"
 # define RED "\033[1;31m"
@@ -65,6 +51,18 @@ typedef struct s_garbage_collector
 # define PLAYER_XPM "assets/sprites/player/front/player17.xpm"
 # define EXIT_XPM "assets/sprites/door/dungeon_door.xpm"
 # define EXIT_OPEN_XPM "assets/sprites/door/opened_door/opened_door.xpm"
+
+typedef struct s_gc_node
+{
+	void				*ptr;
+	struct s_gc_node	*next;
+}					t_gc_node;
+
+typedef struct s_garbage_collector
+{
+	t_gc_node	*head;
+	int			count;
+}				t_gc;
 
 typedef struct s_location
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aozkaya <aozkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 17:09:07 by aozkaya           #+#    #+#             */
-/*   Updated: 2025/06/10 18:45:36 by aozkaya          ###   ########.fr       */
+/*   Updated: 2026/05/07 05:08:34 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ int	main(int argc, const char *argv[])
 {
 	t_ctx	*ctx;
 
-	ctx = malloc(sizeof(t_ctx));
+	ctx = ft_calloc(1, sizeof(t_ctx));
 	if (!ctx)
 		error("Memory allocation failed for game", ctx);
+	gc_init(&ctx->gc);
 	check_cmd_args(argc, argv, ctx);
 	map_initializer(ctx, (char *)argv[1]);
 	so_long_init(ctx);

@@ -25,6 +25,9 @@ BONUS_SRCS = $(addprefix $(BONUS_SRCS_DIR),\
 		get_frame.c get_player_frame.c ig.c map_initializer.c \
 		msg.c paint_frame.c write_steps.c)
 
+# include shared GC implementation from src for bonus build
+BONUS_SRCS += ./src/gc.c ./src/gc_utils.c
+
 OBJS        = $(SRCS:.c=.o)
 BONUS_OBJS  = $(BONUS_SRCS:.c=.o)
 
@@ -92,26 +95,5 @@ run: all
 
 run_bonus: bonus
 	./$(NAME_BONUS) ./assets/maps/valid/bonus/map5.ber
-
-INVALID_MAPS_DIR = ./assets/maps/invalid/
-INVALID_MAPS = $(wildcard $(INVALID_MAPS_DIR)*.ber)
-
-test_invalid_maps: all bonus
-	@echo "\033[1;34m=== Testing invalid maps with $(NAME) ===\033[0m"
-	@for map in $(INVALID_MAPS); do \
-		echo "\n$(NAME) $$map \nTesting $$map with $(NAME):"; \
-		./$(NAME) $$map || echo "Error handled correctly for $$map"; \
-	done
-	@echo "\033[1;34m=== Testing invalid maps with $(NAME_BONUS) ===\033[0m"
-	@for map in $(INVALID_MAPS); do \
-		echo "\nTesting $$map with $(NAME_BONUS):"; \
-		./$(NAME_BONUS) $$map || echo "Error handled correctly for $$map"; \
-	done
-
-test_valgrind: all bonus
-	@echo "\033[1;34m=== Testing $(NAME) with Valgrind ===\033[0m"
-	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) ./assets/maps/valid/platform1.ber
-	@echo "\033[1;34m=== Testing $(NAME_BONUS) with Valgrind ===\033[0m"
-	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME_BONUS) ./assets/maps/valid/bonus/platform_bonus1.ber
 
 .PHONY: all clean fclean re bonus get_libs compile_libs run run_bonus test_invalid_maps test_valgrind

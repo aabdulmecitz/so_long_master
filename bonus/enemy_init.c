@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemy_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aozkaya <aozkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 17:08:30 by aozkaya           #+#    #+#             */
-/*   Updated: 2025/05/31 18:52:47 by aozkaya          ###   ########.fr       */
+/*   Updated: 2026/05/07 04:15:04 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	init_enemies(t_ctx *ctx)
 				return ;
 			if (ctx->map.map_matris[y][x] == WANDER_ENEMY)
 			{
-				new_enemy = (t_enemy *)malloc(sizeof(t_enemy));
+				new_enemy = (t_enemy *)gc_malloc(&ctx->gc, sizeof(t_enemy));
 				if (!new_enemy)
 					return ;
 				init_enemies_value(new_enemy, ctx, x, y);

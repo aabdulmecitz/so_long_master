@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_initializer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aozkaya <aozkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 22:50:01 by aozkaya           #+#    #+#             */
-/*   Updated: 2025/05/25 22:50:03 by aozkaya          ###   ########.fr       */
+/*   Updated: 2026/05/07 04:50:30 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void	map_initializer(t_ctx *ctx, char *argv)
 		map_temp = tmp;
 		ctx->map.rows++;
 	}
-	close(map_fd);
-	check_empty_lines(map_temp, ctx);
+	(close(map_fd), check_empty_lines(map_temp, ctx));
 	ctx->map.map_matris = ft_split(map_temp, '\n');
 	ctx->map_alloc = 1;
+	gc_add_string_array(&ctx->gc, ctx->map.map_matris);
 	free(map_temp);
 }
 

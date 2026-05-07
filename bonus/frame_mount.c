@@ -64,7 +64,7 @@ void	put_texture(t_ctx *ctx, int x, int y)
 		paint_wall_with_animation(ctx, x, y);
 	else if (ctx->map.map_matris[y][x] == FLOOR)
 		mlx_put_image_to_window(ctx->mlx_ptr, ctx->win_ptr, \
-				ctx->floor->xpm_ptr, x * IMG_WIDTH, y * IMG_HEIGHT);
+ctx->floor->xpm_ptr, x * IMG_WIDTH, y * IMG_HEIGHT);
 	else if (ctx->map.map_matris[y][x] == COINS)
 		paint_coin_with_animation(ctx, x, y);
 	else if (ctx->map.map_matris[y][x] == WANDER_ENEMY)

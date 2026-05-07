@@ -65,18 +65,18 @@ void	load_sprite(t_img *sprite, void *mlx, char *path, t_ctx *ctx)
 
 void	ft_init_sprites(t_ctx *ctx)
 {
-	ctx->wall = malloc(sizeof(t_img));
-	ctx->floor = malloc(sizeof(t_img));
-	ctx->coins = malloc(sizeof(t_img));
-	ctx->player_front = malloc(sizeof(t_img));
-	ctx->player_left = malloc(sizeof(t_img));
-	ctx->player_right = malloc(sizeof(t_img));
-	ctx->player_back = malloc(sizeof(t_img));
-	ctx->open_exit = malloc(sizeof(t_img));
-	ctx->exit_closed = malloc(sizeof(t_img));
-	ctx->enemy_x_l = malloc(sizeof(t_img));
-	ctx->enemy_x_r = malloc(sizeof(t_img));
-	ctx->enemy_k = malloc(sizeof(t_img));
+	ctx->wall = gc_malloc(&ctx->gc, sizeof(t_img));
+	ctx->floor = gc_malloc(&ctx->gc, sizeof(t_img));
+	ctx->coins = gc_malloc(&ctx->gc, sizeof(t_img));
+	ctx->player_front = gc_malloc(&ctx->gc, sizeof(t_img));
+	ctx->player_left = gc_malloc(&ctx->gc, sizeof(t_img));
+	ctx->player_right = gc_malloc(&ctx->gc, sizeof(t_img));
+	ctx->player_back = gc_malloc(&ctx->gc, sizeof(t_img));
+	ctx->open_exit = gc_malloc(&ctx->gc, sizeof(t_img));
+	ctx->exit_closed = gc_malloc(&ctx->gc, sizeof(t_img));
+	ctx->enemy_x_l = gc_malloc(&ctx->gc, sizeof(t_img));
+	ctx->enemy_x_r = gc_malloc(&ctx->gc, sizeof(t_img));
+	ctx->enemy_k = gc_malloc(&ctx->gc, sizeof(t_img));
 	if (!ctx->wall || !ctx->floor || !ctx->coins
 		|| !ctx->player_front || !ctx->player_left
 		|| !ctx->player_right || !ctx->player_back

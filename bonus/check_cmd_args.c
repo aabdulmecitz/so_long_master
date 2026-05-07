@@ -22,6 +22,7 @@ void	check_cmd_args(int argc, char const *argv[], t_ctx *ctx)
 		error("You entered alot of argument.", ctx);
 	map_len = ft_strlen(argv[1]);
 	if (!ft_strnstr(&argv[1][map_len - 4], ".ber", 4))
-		error("Map file is not valid. You can enter just .ber file.", \
-		ctx);
+	{
+		error("Map file is not valid. You can enter just .ber file.", ctx);
+	}
 }

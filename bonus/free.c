@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aozkaya <aozkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 17:07:20 by aozkaya           #+#    #+#             */
-/*   Updated: 2025/06/10 19:13:50 by aozkaya          ###   ########.fr       */
+/*   Updated: 2026/05/07 04:54:02 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,20 @@ void	free_img_list(t_img *head, void *mlx_ptr)
 	}
 }
 
-void destroy_sprites(t_ctx *ctx)
+void	destroy_sprites(t_ctx *ctx)
 {
-	free(ctx->wall);
-	free(ctx->floor);
-	free(ctx->coins);
-	free(ctx->player_front);
-	free(ctx->player_left);
-	free(ctx->player_right);
-	free(ctx->player_back);
-	free(ctx->open_exit);
-	free(ctx->exit_closed);
-	free(ctx->enemy_x_l);
-	free(ctx->enemy_x_r);
-	free(ctx->enemy_k);
+	ctx->wall = NULL;
+	ctx->floor = NULL;
+	ctx->coins = NULL;
+	ctx->player_front = NULL;
+	ctx->player_left = NULL;
+	ctx->player_right = NULL;
+	ctx->player_back = NULL;
+	ctx->open_exit = NULL;
+	ctx->exit_closed = NULL;
+	ctx->enemy_x_l = NULL;
+	ctx->enemy_x_r = NULL;
+	ctx->enemy_k = NULL;
 }
 
 void	free_map_inside(t_map *map)

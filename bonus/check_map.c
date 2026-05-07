@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aozkaya <aozkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 17:07:08 by aozkaya           #+#    #+#             */
-/*   Updated: 2025/06/10 19:11:35 by aozkaya          ###   ########.fr       */
+/*   Updated: 2026/05/07 04:53:39 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_check_rectanglular(t_ctx *ctx)
 		{
 			ft_printf(RED "%s , current row len: %d , first row len: \
 				%d\n" RESET, ctx->map.map_matris[i], current_row_len, \
-				first_row_len);
+first_row_len);
 			(ft_destroy_imgs(ctx), error("Map is not rectangular!", ctx));
 			return ;
 		}
@@ -58,7 +58,7 @@ void	ft_check_elements(t_ctx *ctx)
 	{
 		ft_destroy_imgs(ctx);
 		error("Map must contain exactly one starting location ('P')", \
-			ctx);
+ctx);
 	}
 	if (ctx->map.exit != 1)
 	{
@@ -81,7 +81,7 @@ void	ft_search_elements(t_ctx *ctx)
 	while (y < ctx->map.rows)
 	{
 		ft_printf(CYAN "|%s| size: %d|\n" RESET, ctx->map.map_matris[y], \
-				(int)ft_strlen(ctx->map.map_matris[y]));
+(int)ft_strlen(ctx->map.map_matris[y]));
 		x = 0;
 		while (x < ctx->map.columns)
 		{

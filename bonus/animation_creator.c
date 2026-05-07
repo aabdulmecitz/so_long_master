@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation_creator.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aozkaya <aozkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 17:07:30 by aozkaya           #+#    #+#             */
-/*   Updated: 2025/05/25 22:49:34 by aozkaya          ###   ########.fr       */
+/*   Updated: 2026/05/07 04:15:04 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_animation(t_ctx *ctx, t_img *img, ...)
 	temp = img;
 	while (current_path != NULL)
 	{
-		new_img = malloc(sizeof(t_img));
+		new_img = gc_malloc(&ctx->gc, sizeof(t_img));
 		img_creator(ctx, new_img, current_path);
 		temp->next = new_img;
 		temp = temp->next;
